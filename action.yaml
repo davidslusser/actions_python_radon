@@ -45,6 +45,9 @@ runs:
        
     - name: "Run Radon"
       run: |
-        radon.sh ${{ inputs.src }} ${{ inputs.grade }}
-        echo "exitcode=$?" >> $GITHUB_OUTPUT
+        rc=1
+        OUTPUT=$(radon cc -a $1 | tee /dev/tty | tail -1)
+        GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
+        if [[ $GRADE == $2 || $GRADE < $2 ]] ; then  rc=0 ; fi
+        echo $rc >> $GITHUB_OUTPUT
       shell: bash
