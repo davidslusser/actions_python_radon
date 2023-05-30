@@ -1,8 +1,11 @@
 #!/bin/bash
 
-echo "Hello $1"
-ls
-time=$(date)
-echo "time=$time" >> $GITHUB_OUTPUT
-echo $GITHUB_OUTPUT
-exit 0
+set +e 
+OUTPUT=$(radon cc -a $1 | tee /dev/tty | tail -1)
+GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
+
+rc=1
+
+if [[ $GRADE == $2 || $GRADE < $2 ]] ; then  rc=0 ; fi
+
+exit $rc
