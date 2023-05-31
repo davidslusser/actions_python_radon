@@ -15,7 +15,6 @@ inputs:
     type: string
     default: "src"
 runs:
-  uses: actions/checkout@v3
   using: 'docker'
   image: 'Dockerfile'
   args:
