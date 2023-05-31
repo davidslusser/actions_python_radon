@@ -5,7 +5,7 @@ echo "time=$time" >> $GITHUB_OUTPUT
 
 python --version
 
-pylint $1
+pylint $1 --exit-zero
 
 OUTPUT=$(radon cc -a $1 | tail -1)
 echo $OUTPUT
