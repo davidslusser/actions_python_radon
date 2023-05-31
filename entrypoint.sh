@@ -7,8 +7,7 @@ which python
 python --version
 ls -l
 
-set +e 
-OUTPUT=$(radon cc -a src | tee /dev/tty | tail -1)
+OUTPUT=$(radon cc -a src | tail -1)
 GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
 
 rc=1
