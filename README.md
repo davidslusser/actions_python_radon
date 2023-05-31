@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "radon"
     steps:
-      - uses: davidslusser/actions_python_radon@latest
+      - uses: davidslusser/actions_python_radon@v1.0.0
 ```
 <br/>
 
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "radon"
     steps:
-      - uses: davidslusser/actions_python_radon@latest
+      - uses: davidslusser/actions_python_radon@v1.0.0
         with:
           src: "src"
           min: "A"
