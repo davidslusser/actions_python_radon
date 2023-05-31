@@ -5,3 +5,4 @@ time=$(date)
 echo "time=$time" >> $GITHUB_OUTPUT
 which python
 python --version
+ls 
