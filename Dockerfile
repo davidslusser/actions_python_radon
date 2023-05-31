@@ -5,7 +5,7 @@ FROM python
 COPY entrypoint.sh /entrypoint.sh
 
 RUN pip install --upgrade pip
-RUN pip install radon
+RUN pip install radon pylint
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]

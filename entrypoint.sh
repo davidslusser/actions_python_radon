@@ -5,7 +5,10 @@ echo "time=$time" >> $GITHUB_OUTPUT
 
 python --version
 
-OUTPUT=$(radon cc -a src | tail -1)
+pylint $1
+
+OUTPUT=$(radon cc -a $1 | tail -1)
+echo $OUTPUT
 GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
 rc=1
 
