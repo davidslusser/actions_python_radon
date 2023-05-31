@@ -24,4 +24,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.src }}
+    - ${{ inputs.min }}
     - ${{ inputs.grade }}
