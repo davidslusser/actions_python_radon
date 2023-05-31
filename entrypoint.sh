@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 python --version
 OUTPUT=$(radon cc -a -s -n$2 -O radon.out $1)
