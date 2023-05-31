@@ -1,5 +1,4 @@
-#! /bin/bash
-
+set +e 
 OUTPUT=$(radon cc -a $1 | tee /dev/tty | tail -1)
 GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
 

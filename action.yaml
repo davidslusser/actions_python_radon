@@ -1,50 +1,28 @@
 name: actions_python_radon
-description: Github action for running code complexity analysis 
+description: Github action for running code complexity analysis with radon
 branding:
   icon: 'check-circle'
   color: 'green'
 inputs:
-  pip_install_command: 
-    description: "command used to install python dependancies"
-    required: false
-    type: string
-    default: "pip install radon"
-  python_version:
-    description: "version of python to run action with"
-    required: false
-    type: string
-    default: "3.x"
-  src:
-    description: "execution path"
-    required: false
-    type: string
-    default: "."
   grade:
-    description: "minimal grade required for pass"
+    description: "Minimal grade required to pass"
     required: false
     type: string
     default: "B"
+  min:
+    description: "Set the minimum MI to display. Expects a letter between A-F. Defaults to A."
+    required: false
+    type: string
+    default: "A"
+  src:
+    description: "Source file or directory"
+    required: false
+    type: string
+    default: "src"
 runs:
-  using: "composite"
-  steps:
-    - uses: actions/checkout@v3
-    - name: "Setup Python ${{ inputs.python_version }}"
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ inputs.python_version }}
-    
-    - name: "Show Python Version"
-      run: python --version
-      shell: bash
-
-    - name: "Install Python Dependencies"
-      run: |
-        python -m pip install --upgrade pip
-        ${{ inputs.pip_install_command }}
-      shell: bash
-       
-    - name: "Run Radon"
-      run: |
-        radon.sh ${{ inputs.src }} ${{ inputs.grade }}
-        echo "exitcode=$?" >> $GITHUB_OUTPUT
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.src }}
+    - ${{ inputs.min }}
+    - ${{ inputs.grade }}
