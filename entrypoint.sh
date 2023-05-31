@@ -1,12 +1,10 @@
 #!/bin/bash
 set -e
-echo "Hello $1"
 time=$(date)
 echo "time=$time" >> $GITHUB_OUTPUT
-which python
+
 python --version
-ls -l
-radon cc -a src
+"radon cc -a src"
 
 OUTPUT=$(radon cc -a src | tail -1)
 GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
