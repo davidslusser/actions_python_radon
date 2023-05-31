@@ -1,0 +1,22 @@
+name: actions_python_radon
+description: Github action for running code complexity analysis 
+branding:
+  icon: 'check-circle'
+  color: 'green'
+inputs:
+  grade:
+    description: "minimal grade required for pass"
+    required: false
+    type: string
+    default: "B"
+  src:
+    description: "source file or directory"
+    required: false
+    type: string
+    default: "."
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.src }}
+    - ${{ inputs.grade }}

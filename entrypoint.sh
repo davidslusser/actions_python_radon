@@ -1,9 +1,5 @@
-#!/bin/bash
+#!/bin/sh -l
 
-echo "TEST $1"
-echo "TEST $2"
-ls
+echo "Hello $1"
 time=$(date)
 echo "time=$time" >> $GITHUB_OUTPUT
-echo $GITHUB_OUTPUT
-exit 0
