@@ -41,7 +41,7 @@ jobs:
 ## Inputs
   - **src:** source file or directory used for analysis (defaults to "`.`")
   - **grade:** letter grade (rank) to use for pass/fail; average complexity must be equal or greater than this value to pass (defaults to "`B`")
-  - **min:** minimum complexity rand to display (defaults to "`A`")
+  - **min:** minimum complexity rank to display (defaults to "`A`")
 
 <br/>
 
