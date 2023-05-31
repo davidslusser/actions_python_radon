@@ -1,14 +1,9 @@
 #!/bin/bash
 set -e
-time=$(date)
-echo "time=$time" >> $GITHUB_OUTPUT
-
 python --version
-
-OUTPUT=$(radon cc -a $1 | tee /dev/stderr | tail -1)
-GRADE=$(echo $OUTPUT | grep -oP " \w " | tr -d '[:space:]')
+OUTPUT=$(radon cc -a -s -O radon.out $1)
+cat radon.out
+GRADE=$(cat radon.out | tail -1 | sed 's/.*: \([^ ]*\).*/\1/')
 rc=1
-
-if [[ $GRADE == "B" || $GRADE < "B" ]] ; then  rc=0 ; fi
-
+if [[ $GRADE == $2 || $GRADE < $2 ]] ; then  rc=0 ; fi
 exit $rc

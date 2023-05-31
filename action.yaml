@@ -1,16 +1,21 @@
 name: actions_python_radon
-description: Github action for running code complexity analysis 
+description: Github action for running code complexity analysis with radon
 branding:
   icon: 'check-circle'
   color: 'green'
 inputs:
   grade:
-    description: "minimal grade required for pass"
+    description: "Minimal grade required to pass"
     required: false
     type: string
     default: "B"
+  min:
+    description: "Set the minimum MI to display. Expects a letter between A-F. Defaults to A."
+    required: false
+    type: string
+    default: "A"
   src:
-    description: "source file or directory"
+    description: "Source file or directory"
     required: false
     type: string
     default: "src"
