@@ -1,16 +1,22 @@
-# action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: actions_python_radon
+description: Github action for running code complexity analysis 
+branding:
+  icon: 'check-circle'
+  color: 'green'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  grade:
+    description: "minimal grade required for pass"
+    required: false
+    type: string
+    default: "B"
+  src:
+    description: "source file or directory"
+    required: false
+    type: string
+    default: "src"
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.src }}
+    - ${{ inputs.grade }}
