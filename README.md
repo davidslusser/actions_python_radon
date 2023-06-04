@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "radon"
     steps:
+      - uses: actions/checkout@v3
       - uses: davidslusser/actions_python_radon@v1.0.0
 ```
 <br/>
@@ -29,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "radon"
     steps:
+      - uses: actions/checkout@v3
       - uses: davidslusser/actions_python_radon@v1.0.0
         with:
           src: "src"
